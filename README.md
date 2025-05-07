@@ -26,6 +26,8 @@ Start your journey towards comfortable, convenient, and enjoyable living with th
 
 ## About
 
+
+
 The House Rent App is a convenient and user-friendly platform designed to simplify the process of finding your dream rental property.
 
 With powerful search features, detailed property listings, and direct communication with landlords, our app makes it easy to discover the perfect place to call home.
