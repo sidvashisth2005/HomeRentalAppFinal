@@ -3,9 +3,7 @@ package com.example.houserentappproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,87 +16,84 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 public class activity_successful_google_signin extends AppCompatActivity {
 
     public static final String GOOGLE_ACCOUNT = "google_account";
-    ImageView profile_image ;
-    TextView profile_name , profile_email ;
-    Button btn_sign_out , btn_continue ;
-    GoogleSignInClient mGoogleSignInClient ;
-
+    private TextView profileName, profileEmail;
+    private ImageView profileImage;
+    private Button signOut, continueButton;
+    private GoogleSignInClient googleSignInClient;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_successful_google_signin);
 
+        sessionManager = new SessionManager(this);
+        profileName = findViewById(R.id.profile_name);
+        profileEmail = findViewById(R.id.profile_email);
+        profileImage = findViewById(R.id.profile_image);
+        signOut = findViewById(R.id.btn_sign_out);
+        continueButton = findViewById(R.id.btn_continue);
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        GoogleSignInAccount googleSignInAccount = getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        profile_image = findViewById(R.id.profile_image);
-        profile_name = findViewById(R.id.profile_name);
-        profile_email = findViewById(R.id.profile_email);
-        btn_sign_out = findViewById(R.id.btn_sign_out);
-        btn_continue = findViewById(R.id.btn_continue);
+        setDataOnView();
 
-
-//        Picasso.get().load(googleSignInAccount.getPhotoUrl()).into(profile_image);
-        profile_name.setText(googleSignInAccount.getDisplayName());
-        profile_email.setText(googleSignInAccount.getEmail());
-
-
-        btn_continue.setOnClickListener(new View.OnClickListener() {
+        signOut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-//                Intent act_select_city = new Intent(activity_successful_google_signin.this , activity_selectcity.class);
-//                startActivity(act_select_city);
-
-                Intent act_select_city = new Intent(activity_successful_google_signin.this , activity_selectcity.class);
-                startActivity(act_select_city);
-
-            }
-        });
-
-
-        btn_sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 signOut();
             }
         });
 
-//        mGoogleSignInClient.signOut()
-//                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        Intent signin_again = new Intent(activity_successful_google_signin.this , activity_login_user.class);
-//                        startActivity(signin_again);
-//                    }
-//                });
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Proceed to city selection
+                Intent intent = new Intent(activity_successful_google_signin.this, activity_selectcity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
-
+    private void setDataOnView() {
+        GoogleSignInAccount googleSignInAccount = getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
+        if (googleSignInAccount != null) {
+            Picasso.get().load(googleSignInAccount.getPhotoUrl()).centerInside().fit().into(profileImage);
+            profileName.setText(googleSignInAccount.getDisplayName());
+            profileEmail.setText(googleSignInAccount.getEmail());
+            
+            // Save session data
+            sessionManager.createLoginSession(
+                googleSignInAccount.getEmail(),
+                googleSignInAccount.getDisplayName(),
+                googleSignInAccount.getPhotoUrl() != null ? googleSignInAccount.getPhotoUrl().toString() : ""
+            );
+        }
     }
 
     private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Intent signin_again = new Intent(activity_successful_google_signin.this , activity_login_user.class);
-                        startActivity(signin_again);
-                        finish();
-                    }
-                });
+        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                // Clear session
+                sessionManager.logout();
+                
+                // Navigate back to login
+                Intent intent = new Intent(activity_successful_google_signin.this, activity_login_user.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

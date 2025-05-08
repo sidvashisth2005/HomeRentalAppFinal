@@ -32,14 +32,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         House house = list.get(position);
-        holder.name.setText(house.getName());
-        holder.number.setText(house.getNumber());
-        holder.type.setText(house.getType());
-        holder.rent.setText(house.getRent());
-        holder.city.setText(house.getCity());
-
+        holder.name.setText("Owner: " + house.getName());
+        holder.number.setText("Contact: " + house.getNumber());
+        holder.type.setText("Type: " + house.getType());
+        holder.rent.setText("Rent: " + house.getRent());
+        holder.landmark.setText("Landmark: " + house.getLandmark());
     }
 
     @Override
@@ -50,17 +48,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
 
-        TextView name, number, type, rent, city;
+        TextView name, number, type, rent, landmark;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.ownernametv);
-            number = itemView.findViewById(R.id.ownernumbertv);
-            name = itemView.findViewById(R.id.housetypetv);
-            name = itemView.findViewById(R.id.rentamounttv);
-            name = itemView.findViewById(R.id.citytv);
+            name = itemView.findViewById(R.id.houseName);
+            number = itemView.findViewById(R.id.houseNumber);
+            type = itemView.findViewById(R.id.houseType);
+            rent = itemView.findViewById(R.id.houseRent);
+            landmark = itemView.findViewById(R.id.houseLandmark);
         }
     }
 }

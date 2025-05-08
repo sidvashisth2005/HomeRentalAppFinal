@@ -11,100 +11,118 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class activity_registration_user extends AppCompatActivity {
 
-    EditText userFullName , userEmail , userPassword , userContact ;
-    Button btn_register ;
-
-//    private DatabaseReference mDatabase;
-
-
-//    FirebaseDatabase firebaseDatabase ;
-//    DatabaseReference databaseReference ;
-    userInfo userInfo ;
+    private EditText userFullName, userEmail, userPassword, userContact;
+    private Button btn_register;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_user);
 
-//        mDatabase = FirebaseDatabase.getInstance().getReference();
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
 
+        // Initialize views
         userFullName = findViewById(R.id.id_fullname_newuser);
         userEmail = findViewById(R.id.id_email_newuser);
         userPassword = findViewById(R.id.id_password_newuser);
         userContact = findViewById(R.id.id_mobileno_newuser);
         btn_register = findViewById(R.id.btn_regitser);
 
-//        firebaseDatabase = FirebaseDatabase.getInstance();
-//        databaseReference = firebaseDatabase.getReference("userInfo");
-
-        userInfo = new userInfo();
-
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name = userFullName.getText().toString().trim();
+                String email = userEmail.getText().toString().trim();
+                String password = userPassword.getText().toString().trim();
+                String mobileNo = userContact.getText().toString().trim();
 
-                String name = userFullName.getText().toString();
-                String email = userEmail.getText().toString();
-                String password = userPassword.getText().toString();
-                String mobileNo = userContact.getText().toString();
-
-                if(TextUtils.isEmpty(name) && TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(mobileNo)) {
-                    Toast.makeText(activity_registration_user.this, "Please Add some data", Toast.LENGTH_SHORT).show();
-                }
-                else {
-//                    addUserInfoToFirebase(name, email , password , mobileNo);
-//                    FirebaseDatabase.getInstance().getReference().child("TestObj").setValue("TestValue");
-
-//                    public void writeNewUser(String userId, String name, String email) {
-//                        User user = new User(name, email);
-//
-//                        mDatabase.child("users").child(userId).setValue(user);
-//                    }
-
-                    Intent intent = new Intent(view.getContext() , activity_reg_successful.class);
-                    intent.putExtra("name",name);
-                    intent.putExtra("email",email);
-                    startActivity(intent);
-//                finish();
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || 
+                    TextUtils.isEmpty(password) || TextUtils.isEmpty(mobileNo)) {
+                    Toast.makeText(activity_registration_user.this, 
+                        "Please fill all fields", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
+                if (password.length() < 6) {
+                    Toast.makeText(activity_registration_user.this, 
+                        "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-
+                // Create user with email and password
+                mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(activity_registration_user.this, 
+                        new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    if (user != null) {
+                                        // Save additional user data
+                                        UserData userData = new UserData(name, email, mobileNo);
+                                        mDatabase.child(user.getUid()).setValue(userData)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        // Registration successful
+                                                        Intent intent = new Intent(
+                                                            activity_registration_user.this,
+                                                            activity_reg_successful.class);
+                                                        intent.putExtra("name", name);
+                                                        intent.putExtra("email", email);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    } else {
+                                                        Toast.makeText(activity_registration_user.this,
+                                                            "Failed to save user data: " + 
+                                                            task.getException().getMessage(),
+                                                            Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                    }
+                                } else {
+                                    // If registration fails, display a message to the user.
+                                    Toast.makeText(activity_registration_user.this,
+                                        "Registration failed: " + task.getException().getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
     }
 
+    // User data class for Firebase
+    private static class UserData {
+        public String name;
+        public String email;
+        public String mobileNo;
 
-//            private void addUserInfoToFirebase(String name, String email, String password, String mobileNo) {
-//
-//                userInfo.setUserFullName(name);
-//                userInfo.setUserEmail(email);
-//                userInfo.setUserPassword(password);
-//                userInfo.setUserContact(mobileNo);
-//
-//                databaseReference.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                        databaseReference.setValue(userInfo);
-//                        Toast.makeText(activity_registration_user.this, "Successfully Registered", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//                        Toast.makeText(activity_registration_user.this, "Registration Failed" + databaseError, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+        public UserData() {
+            // Default constructor required for Firebase
+        }
 
-//            }
-
+        public UserData(String name, String email, String mobileNo) {
+            this.name = name;
+            this.email = email;
+            this.mobileNo = mobileNo;
+        }
+    }
 }
