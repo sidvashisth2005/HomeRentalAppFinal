@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Property Type Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Property Type"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <Spinner
+            android:id="@+id/propertyTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/property_types"/>
+
+        <!-- Rent Range Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rent Range (₹)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Minimum Rent"
+            android:textColor="#424242"
+            android:layout_marginBottom="4dp"/>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/minRentSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:valueFrom="10000"
+            android:valueTo="70000"
+            android:stepSize="1000"
+            android:value="10000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Maximum Rent"
+            android:textColor="#424242"
+            android:layout_marginBottom="4dp"/>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/maxRentSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:valueFrom="10000"
+            android:valueTo="70000"
+            android:stepSize="1000"
+            android:value="70000"/>
+
+        <!-- Amenities Filter -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amenities"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/parkingCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Parking"
+            android:textColor="#424242"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/gymCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gym"
+            android:textColor="#424242"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/swimmingPoolCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Swimming Pool"
+            android:textColor="#424242"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/gardenCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Garden"
+            android:textColor="#424242"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/securityCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Security"
+            android:textColor="#424242"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Furnished Status -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Furnished Status"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="8dp"/>
+
+        <CheckBox
+            android:id="@+id/furnishedCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Furnished"
+            android:textColor="#424242"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/applyFiltersButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apply Filters"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:textSize="16sp"
+            android:padding="12dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+    </LinearLayout>
+</ScrollView> 

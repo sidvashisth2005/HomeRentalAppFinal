@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="initial_rent_range">
+        <item>10000</item>
+        <item>70000</item>
+    </array>
+    <string-array name="property_types">
+        <item>Any</item>
+        <item>1BHK Apartment</item>
+        <item>2BHK Apartment</item>
+        <item>3BHK Apartment</item>
+        <item>4BHK Apartment</item>
+        <item>Villa</item>
+    </string-array>
+    <string-array name="cities">
+        <item>Select City</item>
+        <item>Mumbai</item>
+        <item>Hyderabad</item>
+        <item>Bangalore</item>
+        <item>Chennai</item>
+    </string-array>
+
+    <!-- Mumbai Landmarks -->
+    <string-array name="mumbai_landmarks">
+        <item>Andheri West</item>
+        <item>Bandra East</item>
+        <item>Marine Drive</item>
+        <item>Powai</item>
+        <item>Juhu</item>
+        <item>Worli</item>
+    </string-array>
+
+    <!-- Hyderabad Landmarks -->
+    <string-array name="hyderabad_landmarks">
+        <item>Gachibowli</item>
+        <item>Hitech City</item>
+        <item>Madhapur</item>
+        <item>Jubilee Hills</item>
+        <item>Banjara Hills</item>
+        <item>Secunderabad</item>
+    </string-array>
+
+    <!-- Bangalore Landmarks -->
+    <string-array name="bangalore_landmarks">
+        <item>Koramangala</item>
+        <item>Indiranagar</item>
+        <item>HSR Layout</item>
+        <item>Whitefield</item>
+        <item>Electronic City</item>
+        <item>Marathahalli</item>
+    </string-array>
+
+    <!-- Chennai Landmarks -->
+    <string-array name="chennai_landmarks">
+        <item>T Nagar</item>
+        <item>Anna Nagar</item>
+        <item>Adyar</item>
+        <item>Velachery</item>
+        <item>OMR</item>
+    </string-array>
+</resources> 

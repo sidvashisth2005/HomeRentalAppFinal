@@ -1,0 +1,226 @@
+HOUSE RENT APP TEST CASES
+=======================
+
+MUMBAI HOUSES (6)
+----------------
+1. Sunset Apartments
+   - Location: Andheri West
+   - Type: 2BHK Apartment
+   - Rent: ₹25,000
+   - Amenities: Parking, Gym, Swimming Pool
+   - Furnished: Yes
+   - Rooms: 2
+   - Bathrooms: 2
+
+2. Green Valley Residency
+   - Location: Bandra East
+   - Type: 1BHK Apartment
+   - Rent: ₹15,000
+   - Amenities: Parking, Security
+   - Furnished: No
+   - Rooms: 1
+   - Bathrooms: 1
+
+3. Marine Drive Heights
+   - Location: Marine Drive
+   - Type: 3BHK Apartment
+   - Rent: ₹45,000
+   - Amenities: Parking, Gym, Swimming Pool, Garden
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+4. Powai Lake View
+   - Location: Powai
+   - Type: 2BHK Apartment
+   - Rent: ₹35,000
+   - Amenities: Parking, Garden, Security
+   - Furnished: Yes
+   - Rooms: 2
+   - Bathrooms: 2
+
+5. Juhu Beach Villa
+   - Location: Juhu
+   - Type: 4BHK Villa
+   - Rent: ₹65,000
+   - Amenities: Parking, Garden, Swimming Pool, Security, Beach Access
+   - Furnished: Yes
+   - Rooms: 4
+   - Bathrooms: 4
+
+6. Worli Sea Face
+   - Location: Worli
+   - Type: 3BHK Apartment
+   - Rent: ₹55,000
+   - Amenities: Parking, Gym, Swimming Pool, Sea View
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+HYDERABAD HOUSES (6)
+------------------
+1. Tech Park Residences
+   - Location: Gachibowli
+   - Type: 3BHK Villa
+   - Rent: ₹35,000
+   - Amenities: Parking, Garden, Security
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+2. Hitech City Apartments
+   - Location: Hitech City
+   - Type: 2BHK Apartment
+   - Rent: ₹20,000
+   - Amenities: Parking, Security
+   - Furnished: No
+   - Rooms: 2
+   - Bathrooms: 2
+
+3. Madhapur Heights
+   - Location: Madhapur
+   - Type: 1BHK Apartment
+   - Rent: ₹12,000
+   - Amenities: Parking, Gym
+   - Furnished: Yes
+   - Rooms: 1
+   - Bathrooms: 1
+
+4. Jubilee Hills Villa
+   - Location: Jubilee Hills
+   - Type: 4BHK Villa
+   - Rent: ₹55,000
+   - Amenities: Parking, Garden, Swimming Pool, Security
+   - Furnished: Yes
+   - Rooms: 4
+   - Bathrooms: 4
+
+5. Banjara Hills Residency
+   - Location: Banjara Hills
+   - Type: 3BHK Apartment
+   - Rent: ₹45,000
+   - Amenities: Parking, Gym, Swimming Pool, Garden
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+6. Secunderabad Heights
+   - Location: Secunderabad
+   - Type: 2BHK Apartment
+   - Rent: ₹18,000
+   - Amenities: Parking, Security
+   - Furnished: No
+   - Rooms: 2
+   - Bathrooms: 2
+
+BANGALORE HOUSES (6)
+------------------
+1. Koramangala Heights
+   - Location: Koramangala
+   - Type: 3BHK Apartment
+   - Rent: ₹30,000
+   - Amenities: Parking, Gym, Swimming Pool
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+2. Indiranagar Residency
+   - Location: Indiranagar
+   - Type: 2BHK Apartment
+   - Rent: ₹22,000
+   - Amenities: Parking, Security
+   - Furnished: No
+   - Rooms: 2
+   - Bathrooms: 2
+
+3. HSR Layout Apartments
+   - Location: HSR Layout
+   - Type: 1BHK Apartment
+   - Rent: ₹15,000
+   - Amenities: Parking
+   - Furnished: Yes
+   - Rooms: 1
+   - Bathrooms: 1
+
+4. Whitefield Villa
+   - Location: Whitefield
+   - Type: 4BHK Villa
+   - Rent: ₹50,000
+   - Amenities: Parking, Garden, Swimming Pool, Security
+   - Furnished: Yes
+   - Rooms: 4
+   - Bathrooms: 4
+
+5. Electronic City Residency
+   - Location: Electronic City
+   - Type: 2BHK Apartment
+   - Rent: ₹20,000
+   - Amenities: Parking, Security
+   - Furnished: Yes
+   - Rooms: 2
+   - Bathrooms: 2
+
+6. Marathahalli Heights
+   - Location: Marathahalli
+   - Type: 3BHK Apartment
+   - Rent: ₹35,000
+   - Amenities: Parking, Gym, Swimming Pool
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+CHENNAI HOUSES (5)
+----------------
+1. T Nagar Residency
+   - Location: T Nagar
+   - Type: 2BHK Apartment
+   - Rent: ₹18,000
+   - Amenities: Parking, Security
+   - Furnished: Yes
+   - Rooms: 2
+   - Bathrooms: 2
+
+2. Anna Nagar Heights
+   - Location: Anna Nagar
+   - Type: 3BHK Apartment
+   - Rent: ₹28,000
+   - Amenities: Parking, Gym, Swimming Pool
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+3. Adyar Villa
+   - Location: Adyar
+   - Type: 4BHK Villa
+   - Rent: ₹45,000
+   - Amenities: Parking, Garden, Swimming Pool, Security
+   - Furnished: Yes
+   - Rooms: 4
+   - Bathrooms: 4
+
+4. Velachery Residency
+   - Location: Velachery
+   - Type: 2BHK Apartment
+   - Rent: ₹20,000
+   - Amenities: Parking, Security
+   - Furnished: No
+   - Rooms: 2
+   - Bathrooms: 2
+
+5. OMR Tech Park
+   - Location: OMR
+   - Type: 3BHK Apartment
+   - Rent: ₹32,000
+   - Amenities: Parking, Gym, Swimming Pool
+   - Furnished: Yes
+   - Rooms: 3
+   - Bathrooms: 3
+
+TEST CASES SUMMARY
+----------------
+Total Houses: 23
+Cities: 4 (Mumbai, Hyderabad, Bangalore, Chennai)
+Price Range: ₹12,000 - ₹65,000
+Property Types: 1BHK, 2BHK, 3BHK, 4BHK
+Amenities: Parking, Gym, Swimming Pool, Garden, Security, Beach Access, Sea View
+Furnished: Mix of furnished and unfurnished properties 
